@@ -1,0 +1,64 @@
+<section>
+    <div class="container">
+        <form #sellerSignUp="ngForm" (ngSubmit)="signUp(sellerSignUp.value)" class="common-form"
+            style="background:rgba(51,45,45,0.2);">
+            <!-- <div class="logo"><a><img src="https://www.bootstrapdash.com/demo/skydash/template/images/logo.svg"
+                        alt="Logo"></a></div> -->
+            <div class="admin"  >
+                <h2>
+                    New User
+                </h2>
+                <p style="color: grey;">
+                    Fill your details here!
+                </p>
+            </div>
+            <div class="form-group">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-input" id="name" name="userName" ngModel #name="ngModel" required
+                    placeholder="Eg:- John Doe">
+                <p class="invalid-input"><span *ngIf="name.invalid && name.touched "> Please enter you name </span></p>
+            </div>
+    
+            <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-input" id="email" name="emailAddress" ngModel #email="ngModel" required
+                    placeholder="example@example.com">
+                <p class="invalid-input"><span *ngIf="email.invalid && email.touched ">Please enter the email</span></p>
+            </div>
+    
+            <div class="form-group">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="number" class="form-input" id="phone" name="phoneNumber" ngModel #phone="ngModel" required
+                    placeholder="123-123-6969">
+                <p class="invalid-input"><span *ngIf="phone.invalid && phone.touched"> Please enter your phone
+                        number</span></p>
+            </div>
+            <div class="form-group">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-input" id="password" name="password" ngModel #password="ngModel"
+                    required placeholder="&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;">
+                <p class="invalid-input">
+                    <span *ngIf="password.invalid && password.touched">Please enter a password</span>
+                    <span *ngIf="password.value && !passwordIsValid(password.value)">
+                        Password must contain at least one uppercase letter, one symbol, and be at least 8 characters
+                        long.
+                    </span>
+                    <span *ngIf="password.value && hasThreeConsecutiveNumbers(password.value)">Password cannot contain a
+                        sequence
+                        of 3 or more numbers</span>
+                </p>
+            </div>
+    
+            <div class="form-group">
+                <label for="Confirmpassword" class="form-label">Confirm Password</label>
+                <input type="password" class="form-input" id="password2" name="confirmPassword" ngModel required
+                    placeholder="&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;">
+                <p class="invalid-input"><span *ngIf="passwordsDoNotMatch()"> Passwords do not match.</span></p>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="form-button">Register</button>
+                <p>If you already have a account? <a routerLink="/auth" style="color: grey;" >Click to Login</a></p>
+            </div>
+        </form>
+    </div>
+</section>
