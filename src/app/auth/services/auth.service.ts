@@ -24,7 +24,7 @@ export class AuthService {
     try {
       return this._http.post<any>('http://10.8.10.95:4003/users/', data, { headers: { "Content-Type": "application/json" } }).pipe(
         tap((response: any) => {
-          localStorage.setItem('user', JSON.stringify(response.token));
+          // localStorage.setItem('user', JSON.stringify(response.token));
           this.toastr.success('User sign-up successfully');
           this.isuserLoggedIn.next(true);
           this._router.navigate(['/admin']);
@@ -47,7 +47,7 @@ export class AuthService {
         const user = response;
         // if(response.status !== 200) throw new Error;
         if (user) {
-          localStorage.setItem('user', JSON.stringify(response));
+          // localStorage.setItem('user', JSON.stringify(response));
           this.toastr.success('User logged in successfully');
           this.isuserLoggedIn.next(true);
           this.isLogginFailed.next(false);
